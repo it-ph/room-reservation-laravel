@@ -42,6 +42,8 @@
                         </div>
                     </div>
 
+                    <div id="loggingInForm" style="color: red; display:none" class="blink_me"> Logging in...</div>
+
                     {{-- <div class="form-group row">
                         <div class="col-md-6 offset-md-4">
                             <div class="form-check">
@@ -73,7 +75,7 @@
 
         </div><!--modal-body-->
         <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" onclick="loggingInNotif();" class="btn btn-primary">
                         {{ __('Login') }} <i class="fa fa-chevron-circle-right"></i>
                     </button>
                 </form>

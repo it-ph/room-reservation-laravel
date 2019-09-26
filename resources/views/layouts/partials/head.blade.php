@@ -68,6 +68,16 @@
     .fc-event{
     cursor: pointer;
     }
+
+    .blink_me {
+  animation: blinker 1s linear infinite;
+    }
+
+    @keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+    }
 </style>
     @yield('css')
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

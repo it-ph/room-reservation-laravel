@@ -310,6 +310,12 @@
     }(window.jQuery);
 </script>
 
+<script>
+function loggingInNotif()
+{
+    $("#loggingInForm").fadeIn();
+}
+</script>
 @endsection
 
 
