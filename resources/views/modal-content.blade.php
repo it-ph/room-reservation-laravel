@@ -129,8 +129,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label" for="participants"><strong>PARTICIPANTS</strong></label>
-                    <input type="number" id="participants" value="{{old('participants')}}"   autocomplete="off" name="participants" class="form-control">
+                    <label class="control-label" for="participants"><strong>PARTICIPANTS <span style="color: red; font-weight: bold;">*</span></strong></label>
+                    <input type="number" id="participants" required value="{{old('participants')}}"   autocomplete="off" name="participants" class="form-control">
                 </div>
     
 

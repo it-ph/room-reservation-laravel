@@ -24,6 +24,7 @@
     <link href="{{asset('css/daterangepicker.css')}}" rel="stylesheet">
     <link href="{{asset('css/floating-label.css')}}" rel="stylesheet">
     <link href="{{asset('css/sweetalert.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/google.font.css')}}" >
     <style>
     .page-wrapper {
     margin-left: 0px !important;

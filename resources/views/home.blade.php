@@ -270,15 +270,9 @@
 
    //init
     @if(Session::has('to_notify'))
-    swal("Successful!", "{{ Session::get('to_notify') }}", "success")
+    swal("Successfully Created!", "{{ Session::get('to_notify') }}", "success")
     @endif
     $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert
-    }(window.jQuery),
-
-    //initializing 
-    function($) {
-        "use strict";
-        $.SweetAlert.init()
     }(window.jQuery);
 </script>
 

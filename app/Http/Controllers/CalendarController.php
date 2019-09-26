@@ -48,12 +48,14 @@ class CalendarController extends Controller
             'roomId'       => 'required',
             'start'       => 'required',
             'end'       => 'required',
+            'participants'       => 'required',
           
         ],
             $messages = array('title.required' => 'Title is Required!',
             'roomId.unique' => 'Please Choose a Room!',
             'start.required' => 'Start Sched is Required!',
             'end.required' => 'End Sched is Required!',
+            'participants.required' => 'Participants Number is Required!',
             
             )
         );
@@ -74,7 +76,8 @@ class CalendarController extends Controller
         $event = Events::create($request->all());
         return redirect()->back()
         // ->with('with_success', strtoupper($event->title) .' Created succesfully!')
-        ->with('to_notify', strtoupper($event->title) .' was created Succesfully!'); 
+        ->with('to_notify', strtoupper($event->title) . " " . $event->start->format('Y-m-d H:i A') .' - ' . $event->end->format('Y-m-d H:i A')); 
+      
     }
 
     /**
