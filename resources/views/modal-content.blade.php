@@ -105,12 +105,12 @@
           <form method="POST" action="{{ route('events.store') }}">
              @csrf
                 
-             <div class="form-group">
+             <div class="form-group" style="margin-bottom: 40px">
                     <label class="control-label"><strong>EVENT TITLE <span style="color: red; font-weight: bold;">*</span></strong></label>
                     <input type="text" id="title" value="{{old('title')}}" autocomplete="off" required name="title" class="form-control">
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" style="margin-bottom: 40px">
                     <label class="control-label" for="roomId">
                         <strong>LOCATIONS 
                         <span style="color: red; font-weight: bold;">*</span>
@@ -125,22 +125,84 @@
                     </select>
                 </div>
 
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <input type="text" required class="form-control" value="{{old('start')}}" placeholder="FROM" id="from-date" name="start" style="margin-bottom: 10px">
                     <input type="text" required class="form-control" value="{{old('end')}}" placeholder="TO" id="to-date" name="end">
+                </div> --}}
+
+                <div class="row" style="margin-bottom: 40px">
+                    <div class="col-md-12">
+                        <span style="font-weight: bold">SCHEDULE <span style="color: red; font-weight: bold;">*</span> </span>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" name="start_date" style="cursor:pointer" id="start_date" class="form-control mdate" value="{{date('Y-m-d')}}">
+                    </div>
+
+                    <div class="col-md-2">
+                    <input type="text" name="start_time" style="cursor:pointer" id="start_time" class="form-control clockpicker" value="{{date('H:i')}}">
+                    </div>
+                    <div class="col-md-1" style="width: 50px"> <span style="font-weight: bold; color: #1976D2">TO</span> </div>
+                    <div class="col-md-3">
+                            <input type="text" name="end_date" style="cursor:pointer" id="end_date" class="form-control mdate" value="{{date('Y-m-d')}}">
+                        </div>
+    
+                        <div class="col-md-2">
+                            <input type="text" name="end_time" style="cursor:pointer" id="end_time" class="form-control clockpicker" value="{{date('H:i')}}">
+                        </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label" for="participants"><strong>PARTICIPANTS <span style="color: red; font-weight: bold;">*</span></strong></label>
-                    <input type="number" id="participants" required value="{{old('participants')}}"   autocomplete="off" name="participants" class="form-control">
+                
+                <div class="form-group" style="margin-bottom: 40px">
+                        <label class="control-label" for="participants"><strong>PARTICIPANTS</label>
+                        <input type="number" id="participants" value="{{old('participants')}}"   autocomplete="off" name="participants" class="form-control">
+                    </div>
+
+                <div class="row">
+                        <div class="col-md-6" style="margin-bottom: 20px">
+                            <span style="font-weight: bold">REPEAT </span>
+                            </div>
+                            <div class="col-md-6" style="margin-bottom: 20px">
+                                    <span style="font-weight: bold; display: none" class="untilDateLabel">UNTIL </span>
+                                </div>
+                    <div class="col-md-6">
+                        <div class=" btn-group" data-toggle="buttons">
+                            <input type="hidden" name="repeatDay" id="repeatDay">
+                                <span onclick="getUntilDate();addRepeatDay(0)"  class="btn btn-warning">
+                                    <input type="checkbox"> Su
+                                </span>
+                                <span  onclick="getUntilDate();addRepeatDay(1)" class="btn btn-warning">
+                                     <input type="checkbox"> Mo
+                                </span>
+                                <span  onclick="getUntilDate();addRepeatDay(2)" class="btn btn-warning">
+                                     <input type="checkbox"> Tu
+                                </span>
+                                <span  onclick="getUntilDate();addRepeatDay(3)" class="btn btn-warning">
+                                     <input type="checkbox"> We
+                                </span>
+                                <span  onclick="getUntilDate();addRepeatDay(4)" class="btn btn-warning">
+                                     <input type="checkbox"> Th
+                                </span>
+                                <span  onclick="getUntilDate();addRepeatDay(5)" class="btn btn-warning">
+                                     <input type="checkbox"> Fr
+                                </span>
+                                <span  onclick="getUntilDate();addRepeatDay(6)" class="btn btn-warning">
+                                     <input type="checkbox"> Sa
+                                </span>
+                           </div>
+                        </div>
+                        <div class="col-md-6" >
+                            <input type="text" name="repeatUntil" id="untilDate" style="display:none" onclick="getUntilDate()" placeholder="Select Until Date"  class="form-control untilDateLabel untildate">
+                        </div>
                 </div>
+             
+
     
 
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label class="control-label"><strong>REMARKS</strong></label>
                     <textarea name="remarks" class="form-control" id="remarks" cols="30" rows="5">{{old('remarks')}}</textarea>
                 </div>
-           
+            --}}
                
                         
         </div><!--floating-->

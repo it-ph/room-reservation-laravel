@@ -18,7 +18,7 @@ class CreateEventTable extends Migration
             $table->string('title');
             $table->unsignedBigInteger('roomId');
             $table->foreign('roomId')->references('id')->on('rooms');
-            $table->integer('repeatId')->default(0);
+            $table->string('repeatDay')->nullable();
             $table->integer('participants')->nullable();
             $table->dateTime('start');
             $table->dateTime('end');

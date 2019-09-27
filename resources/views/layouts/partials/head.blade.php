@@ -69,6 +69,11 @@
     cursor: pointer;
     }
 
+    .popover.clockpicker-popover{
+    z-index: 1050;
+    }
+    
+
     .blink_me {
   animation: blinker 1s linear infinite;
     }

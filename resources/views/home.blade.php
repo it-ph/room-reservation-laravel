@@ -115,6 +115,21 @@
 
 
  <!-- ALL EVENT MODAL  -->
+ <div id="calendarModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                <h4 id="modalTitle" class="modal-title"></h4>
+            </div>
+            <div id="modalBody" class="modal-body"> </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
  <div class="modal none-border" id="my-event-all">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -133,96 +148,127 @@
 </div>
 
 <!-- END MODAL -->
-
-
-
-                <script>
-                    var CalendarApp = function() {
-                    this.$body = $("body")
-                    this.$calendar = $('#calendarAll'),
-                    this.$event = ('#calendar-events div.calendar-events'),
-                    this.$modal = $('#my-event-all'),
-                    this.$saveCategoryBtn = $('.save-category'),
-                    this.$calendarObj = null
-                };
-            
-                CalendarApp.prototype.onEventClick =  function (calEvent, jsEvent, view) {
-                    var $this = this;
-                        var form = $("<div></div>");
-                        var start = moment(calEvent._start).format("MMM Do YYYY h:mm A ddd ");
-                        var end = moment(calEvent.end).format("MMM Do YYYY h:mm A ddd ");
-                        form.append("<div><h3><strong> "+ calEvent.title + "</strong></h3><hr><p style='font-weight: bold'>"
-                        + start +  " - " + end + "</p>" +
-                        "<p><span style='font-weight: 600'>Created By:</span> " + calEvent.createdBy + "</p>" +
-                        "<p><span style='font-weight: 600'>Location:</span> " + calEvent.location + "</p>"  +
-                        "<hr><p style='font-weight: 600'>Remarks: </p>"  + calEvent.remarks +"</div>"
-                        );
-                    
-                        $this.$modal.modal({
-                            backdrop: 'static'
-                        });
-                        $this.$modal.find('.modal-body').empty().prepend(form).end().find('.delete-event').unbind('click').click(function () {
-                            $this.$calendarObj.fullCalendar('removeEvents', function (ev) {
-                                return (ev._id == calEvent._id);
-                            });
-                            $this.$modal.modal('hide');
-                        });
-                },
-                 
-                /* Initializing */
-                CalendarApp.prototype.init = function() {
-                    var defaultEvents =  [
+<script>
+var defaultEvents =  [
                         
                         @foreach($events as $event)    
-                            {
+                            {        
+                               
                                 title: "{{strtoupper($event->title)}}",
-                                start: "{{ \Carbon\Carbon::parse($event->start)->format('Y-m-d H:i')}}",
+                                borderColor: "@if($event->theRoom){{$event->theRoom->color_code}}@endif",
+                  
+                                start: "{{ \Carbon\Carbon::parse($event->start)->format('Y-m-d H:i')}} ",
                                 end: "{{ \Carbon\Carbon::parse($event->end)->format('Y-m-d H:i') }}",
                                 location: "@if($event->theRoom){{ucwords($event->theRoom->room)}}@endif",
-                                remarks: "{{$event->remarks}}",
+                                remarks: "{{$event->remarks}} {{ \Carbon\Carbon::parse($event->start)->format('Y-m-d H:i')}} - {{ \Carbon\Carbon::parse($event->end)->format('Y-m-d H:i') }}",
                                 createdBy: "@if($event->theCreator){{$event->theCreator->fullname}}@endif",
                                 backgroundColor: "@if($event->theRoom){{$event->theRoom->color_code}}@endif",
-                                borderColor: "@if($event->theRoom){{$event->theRoom->color_code}}@endif",
+                                @isset( $event->repeatUntil)
+                                <?php $rep = str_split($event->repeatDay);?>
+                                dow: [ {{implode(",",$rep)}} ]  , // Repeat monday and thursday    
+                                dowstart: new Date("{{ \Carbon\Carbon::parse($event->start)->format('Y/m/d')}}"),
+                                dowend: new Date("{{ \Carbon\Carbon::parse($event->repeatUntil)->format('Y/m/d')}}")
+                                @endisset
+                         
                             },
                         @endforeach 
                       ];
-            
-                    var $this = this;
-                    $this.$calendarObj = $this.$calendar.fullCalendar({
-                        nextDayThreshold: '00:00:00',
-                        defaultView: 'month',  
-                        handleWindowResize: true,   
-                         
-                        header: {
-                            left: 'prev,next today',
-                            center: 'title',
-                            right: 'month,agendaWeek,agendaDay'
-                        },
-                        events: defaultEvents,
-                        editable: false,
-                        droppable: false,
-                        eventLimit: true, // allow "more" link when too many events
-                        selectable: true,
-                        eventClick: function(calEvent, jsEvent, view) { $this.onEventClick(calEvent, jsEvent, view); }
-            
-                    });
-            
-                },
-            
-               //init CalendarApp
-                $.CalendarApp = new CalendarApp, $.CalendarApp.Constructor = CalendarApp
-                $.CalendarApp.init()
-                </script>
-        
+$(document).ready(function() {
+  $('#calendarAll').fullCalendar({
+  
+        eventRender: function(event, element, view) {
 
-        <script>
+        var theDate = event.start
+        var endDate = event.dowend;
+		var startDate = event.dowstart;
+        
+        if (theDate >= endDate) {
+                return false;
+        }
+
+        if (theDate <= startDate) {
+          return false;
+        }
+        
+        },
+        nextDayThreshold: '00:00:00',
+        timezone : 'local',
+        defaultView: 'month',
+        eventLimit: true,
+        views: {
+            month: {
+            eventLimit: 5,
+            eventLimitText: "events"
+            }
+        },
+        selectable: true,
+        header: {
+        left: 'prev,next today',
+  			center: 'title',
+  			right: 'month,agendaWeek,agendaDay'
+        },
+        // defaultDate: '2016-01-15T16:00:00',
+
+
+        
+        events: defaultEvents,
+        eventClick:  function(event, jsEvent, view) {
+            $('#modalTitle').html(event.title);
+            $('#modalBody').html(event.remarks);
+            // $('#eventUrl').attr('href',event.url);
+            $('#calendarModal').modal();
+        },
+ 
+  })
+});</script>
+<script>
+
+
+// document.querySelector("#untilDate").addEventListener("click", function() {
+//   invoiceDate = $('#start_date').val();
+//   console.log(invoiceDate);
+//   var days = 30// Number(document.querySelector("#days").value);
+
+//   if (!isNaN(days) && invoiceDate.length) {
+//     invoiceDate = invoiceDate.split("-");
+//     invoiceDate = new Date(invoiceDate[0], invoiceDate[1] - 1, invoiceDate[2]);
+//     invoiceDate.setDate(invoiceDate.getDate() + days);
+
+//     console.log(invoiceDate);
+  
+//   }
+// });
+
+
+function getUntilDate()
+{
+     var lastDateOG = $('#start_date').val();
+     var lastDate = $('#start_date').val();
+//   console.log(invoiceDate);
+  var days = 30// Number(document.querySelector("#days").value);
+
+  if (!isNaN(days) && lastDate.length) {
+    lastDate = lastDate.split("-");
+    lastDate = new Date(lastDate[0], lastDate[1] - 1, lastDate[2]);
+    lastDate.setDate(lastDate.getDate() + days);
+
+    // invoiceDate =   invoiceDate;
+    
+    $('.untildate').bootstrapMaterialDatePicker({ weekStart: 0, time: false, minDate: new Date(lastDateOG),maxDate: new Date(lastDate) });
+    console.log(lastDate + "NIKKO") ;
+
+    $(".untilDateLabel").show();
+}
+
+}
             // MAterial Date picker    
-            $('#mdate').bootstrapMaterialDatePicker({ weekStart: 0, time: false });
+            $('.mdate').bootstrapMaterialDatePicker({ weekStart: 0, time: false, minDate: new Date() });
+            // $('.untildate').bootstrapMaterialDatePicker({ weekStart: 0, time: false, minDate: new Date() });
             $('#timepicker').bootstrapMaterialDatePicker({ format: 'HH:mm', time: true, date: false });
             $('#date-format').bootstrapMaterialDatePicker({ format: 'dddd DD MMMM YYYY - HH:mm' });
         
-            $('#from-date').bootstrapMaterialDatePicker({ format: 'YYYY/MM/DD HH:mm', minDate: new Date() });
-            $('#to-date').bootstrapMaterialDatePicker({ format: 'YYYY/MM/DD HH:mm', minDate: new Date() });
+            $('#from-date').bootstrapMaterialDatePicker({ format: 'YYYY/MM/DD HH:mm',time: false , minDate: new Date() });
+            $('#to-date').bootstrapMaterialDatePicker({ format: 'YYYY/MM/DD HH:mm',time: false , minDate: new Date() });
             // Clock pickers
             $('#single-input').clockpicker({
                 placement: 'bottom',
@@ -304,7 +350,7 @@
 
    //init
     @if(Session::has('to_notify'))
-    swal("Successfully Created!", "{{ Session::get('to_notify') }}", "success")
+    swal("Created!", "{{ Session::get('to_notify') }}", "success")
     @endif
     $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert
     }(window.jQuery);
@@ -314,6 +360,21 @@
 function loggingInNotif()
 {
     $("#loggingInForm").fadeIn();
+}
+
+function addRepeatDay($id)
+{
+  var days =  $("#repeatDay").val();
+
+  var new_days
+  $(":checkbox").change(function() {
+    if(this.checked) {
+        new_days =  $("#repeatDay").val(days + $id);
+    }else{
+        new_days =  days.replace($id,'');
+        new_days =  $("#repeatDay").val(new_days);
+    }
+});
 }
 </script>
 @endsection

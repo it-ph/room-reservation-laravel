@@ -19,7 +19,9 @@ class CalendarController extends Controller
     {
         $rooms = Rooms::get();
         $events = Events::get();
-    
+        
+        // $aa = str_split($events->repeatDay);
+        // return implode(",",$aa);
         return view('home',compact('rooms','events'));
     }
 
@@ -46,37 +48,51 @@ class CalendarController extends Controller
         [
             'title'       => 'required',
             'roomId'       => 'required',
-            'start'       => 'required',
-            'end'       => 'required',
-            'participants'       => 'required',
+            'start_date'       => 'required',
+            'start_time'       => 'required',
+            'end_date'       => 'required',
+            'end_time'       => 'required',
+            // 'participants'       => 'required',
           
         ],
             $messages = array('title.required' => 'Title is Required!',
             'roomId.unique' => 'Please Choose a Room!',
-            'start.required' => 'Start Sched is Required!',
-            'end.required' => 'End Sched is Required!',
             'participants.required' => 'Participants Number is Required!',
             
             )
         );
 
-        $request['start'] = $request['start'] . ":00";
-        $request['end'] = $request['end'] . ":00";
+        $request['start'] = $request['start_date'] . " " . $request['start_time'] . ":00";
+        $request['end'] = $request['end_date'] . " " . $request['end_time'] . ":00";
 
         $request['start'] = Carbon::parse($request['start']);
         $request['end'] = Carbon::parse($request['end']);
 
+        if($request->has('repeatDay') && $request->filled('repeatDay'))
+        {
+            $request['repeatUntil'] = Carbon::parse($request['repeatUntil'])->addDay();
+        }
+        
         if( $request['start'] >  $request['end'] )
         {
             return redirect()->back()->with('date_range_error', 'Date End cannot be Greater than Date Start'); 
         }
 
-        $request['createdBy'] = Auth::user()->id;
-       
-        $event = Events::create($request->all());
+        $event = Events::create([
+            'title' => $request['title'],
+            'roomId' => $request['roomId'],
+            'repeatDay' => $request['repeatDay'],
+            'repeatUntil' => $request['repeatUntil'],
+            'participants' => $request['participants'],
+            'start' => $request['start'],
+            'end' => $request['end'],
+            'createdBy' =>  Auth::user()->id,
+            'remarks' => $request['remarks'],
+            'created_at' => Carbon::now(),
+        ]);
         return redirect()->back()
         // ->with('with_success', strtoupper($event->title) .' Created succesfully!')
-        ->with('to_notify', strtoupper($event->title) . " " . $event->start->format('Y-m-d H:i A') .' - ' . $event->end->format('Y-m-d H:i A')); 
+        ->with('to_notify', strtoupper($event->title) . " " . $event->start->format('M d Y H:i A') .' - ' . $event->end->format('M d Y H:i A')); 
       
     }
 

@@ -9,8 +9,8 @@ class Events extends Model
     protected $table = 'events';
     protected $dates = ['start','end'];
     protected $guarded = [];
-    const CREATED_AT = 'createdAt'; //disableOnLocal
-    const UPDATED_AT = 'updatedAt'; //disableOnLocal
+    // const CREATED_AT = 'createdAt'; //disableOnLocal
+    // const UPDATED_AT = 'updatedAt'; //disableOnLocal
 
     public function theRoom()
     {
