@@ -32,16 +32,34 @@
     }
     .topbar .navbar-header {
     background: transparent;
-    }   
+    } 
+
+    .fc-button {
+    background: #1976d2;
+    border: 1px solid rgba(120, 130, 140, 0.13);
+    color: #e9ecef;
+    text-transform: capitalize;
+    }  
+
+    .fc-button:hover {
+    background-color: #FFB22B !important;
+    }  
+
+    .fc-state-down, .fc-state-active {
+    background-color: #003B5D;
+    color: white;
+    background-image: none;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
 
     .fc th.fc-sun, .fc th.fc-tue, .fc th.fc-thu, .fc th.fc-sat {
-    background: #FD5A46;
+    background: #1976d2;
     color: white;
     font-weight: 400;
     }
 
     .fc th.fc-mon, .fc th.fc-wed, .fc th.fc-fri {
-    background: #FD5A46;
+    background: #1976d2;
     color: white;
     font-weight: 400;
     }

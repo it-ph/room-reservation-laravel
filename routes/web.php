@@ -21,6 +21,11 @@ Route::get('logout', function () {
     return redirect('/');
 });
 
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
+});
+
 
 Route::get('unauthorized', function () {
     return view('notifications.401');

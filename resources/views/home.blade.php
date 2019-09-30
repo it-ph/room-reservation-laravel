@@ -40,7 +40,7 @@
                                 <li class="nav-item"> <a style="font-size: 12.5px; font-weight: bold; color:#1976d2" class="nav-link active" data-toggle="tab" href="#home" role="tab" aria-expanded="true"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">ALL</span></a> </li>
                             
                                 <li class="nav-item"> 
-                                <a style="font-size: 12.5px; font-weight: bold; color:#222d32" class="nav-link" data-toggle="tab" href="#6th-street" role="tab" aria-expanded="false">
+                                <a style="font-size: 12.5px; font-weight: bold; color:#222d32" class="nav-link" href="{{url('abcd')}}" aria-expanded="false">
                                     <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
                               6TH STREET</span></a> 
                                 </li>
