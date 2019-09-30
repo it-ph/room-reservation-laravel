@@ -15,14 +15,49 @@ class CalendarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($slug='home')
     {
         $rooms = Rooms::get();
-        $events = Events::get();
+        // $events = Events::get();
         
         // $aa = str_split($events->repeatDay);
         // return implode(",",$aa);
+      
+        
+        switch ($slug) {
+            case '6thstreet':
+                $events = Events::where('roomId',1)->get();
+                break;
+            case 'lakeaustin':
+                $events = Events::where('roomId',2)->get();
+                break;
+            case 'longhorn':
+                $events = Events::where('roomId',3)->get();
+                break;
+            case 'manchaca':
+                $events = Events::where('roomId',4)->get();
+                break;
+            case 'pecan':
+                $events = Events::where('roomId',5)->get();
+                break;
+            case 'stevieray':
+                $events = Events::where('roomId',6)->get();
+                break;
+            case 'tajmahal':
+               $events = Events::where('roomId',7)->get();
+                break;
+            case 'theoasis':
+                $events = Events::where('roomId',8)->get();
+                break;
+            
+            default:
+                $events = Events::get();
+                break;
+        }
+
+
         return view('home',compact('rooms','events'));
+     
     }
 
     /**
@@ -62,11 +97,25 @@ class CalendarController extends Controller
             )
         );
 
+       
+
         $request['start'] = $request['start_date'] . " " . $request['start_time'] . ":00";
         $request['end'] = $request['end_date'] . " " . $request['end_time'] . ":00";
 
         $request['start'] = Carbon::parse($request['start']);
         $request['end'] = Carbon::parse($request['end']);
+
+         //Check if has Event Already'
+        $checker = Events::where('roomId',  $request['roomId'])
+         ->whereDate('start', '>=', $request['start'] )
+         ->whereDate('end', '<=',  $request['end'])
+         ->first();
+
+         if( $checker )
+        {
+            return redirect()->back()->with('date_range_error', 'Conflict On Schedule'); 
+        }
+
 
         if($request->has('repeatDay') && $request->filled('repeatDay'))
         {

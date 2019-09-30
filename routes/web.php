@@ -31,8 +31,10 @@ Route::get('unauthorized', function () {
     return view('notifications.401');
 })->name('unauthorized');
 
-Route::get('/', 'CalendarController@index');
-Route::get('/home', 'CalendarController@index')->name('home');
+Route::get('/', 'CalendarController@index')->name('home');
+Route::get('/{slug}', 'CalendarController@index');
+
+// Route::get('/home', 'CalendarController@index')->name('home');
 
 // Auth::routes();
 Auth::routes(['register' => false]);

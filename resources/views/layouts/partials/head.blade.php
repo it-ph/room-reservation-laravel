@@ -86,6 +86,7 @@
     }
     .fc-event{
     cursor: pointer;
+    
     }
 
     .popover.clockpicker-popover{

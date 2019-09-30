@@ -37,55 +37,55 @@
                         <div class="card-body">
                             <!-- Nav tabs -->
                             <ul class="nav nav-pills">
-                                <li class="nav-item"> <a style="font-size: 12.5px; font-weight: bold; color:#1976d2" class="nav-link active" data-toggle="tab" href="#home" role="tab" aria-expanded="true"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">ALL</span></a> </li>
+                                <li class="nav-item"> <a style="font-size: 12.5px; font-weight: bold; color:#1976d2" class="nav-link @if (\Request::is('home')) active" href="#" @else " href="{{url('home')}}"  @endif  aria-expanded="true"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">ALL</span></a> </li>
                             
                                 <li class="nav-item"> 
-                                <a style="font-size: 12.5px; font-weight: bold; color:#222d32" class="nav-link" href="{{url('abcd')}}" aria-expanded="false">
+                                <a style="font-size: 12.5px; font-weight: bold; color:#222d32" class="nav-link @if (\Request::is('6thstreet')) active" href="#" @else " href="{{url('6thstreet')}}"  @endif aria-expanded="false">
                                     <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
                               6TH STREET</span></a> 
                                 </li>
-
+                                
                                 <li class="nav-item"> 
-                                    <a style="font-size: 12.5px; font-weight: bold; color: #222d32" class="nav-link" data-toggle="tab" href="#lake-austine" role="tab" aria-expanded="false">
+                                <a style="font-size: 12.5px; font-weight: bold; color:#222d32" class="nav-link @if (\Request::is('lakeaustin')) active" href="#" @else " href="{{url('lakeaustin')}}"  @endif  aria-expanded="false">
                                         <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
-                                           LAKE AUSTIN</span></a> 
-                                </li>
+                                  LAKE AUSTIN</span></a> 
+                                    </li>
 
                                 <li class="nav-item"> 
-                                    <a style="font-size: 12.5px; font-weight: bold; color: #222d32" class="nav-link" data-toggle="tab" href="#long-horn" role="tab" aria-expanded="false">
-                                        <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
-                                        LONGHORN</span></a> 
-                                </li>
-
-                                <li class="nav-item"> 
-                                    <a style="font-size: 12.5px; font-weight: bold; color: #222d32" class="nav-link" data-toggle="tab" href="#manchaca" role="tab" aria-expanded="false">
+                                <a style="font-size: 12.5px; font-weight: bold; color:#222d32" class="nav-link @if (\Request::is('longhorn')) active" href="#" @else " href="{{url('longhorn')}}"  @endif  aria-expanded="false">
                                             <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
-                                        MANCHACA</span></a> 
+                                      LONGHORN</span></a> 
                                 </li>
 
                                 <li class="nav-item"> 
-                                    <a style="font-size: 12.5px; font-weight: bold; color: #222d32" class="nav-link" data-toggle="tab" href="#pecan" role="tab" aria-expanded="false">
-                                        <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
-                                  PECAN</span></a> 
+                                        <a style="font-size: 12.5px; font-weight: bold; color:#222d32" class="nav-link @if (\Request::is('manchaca')) active" href="#" @else " href="{{url('manchaca')}}"  @endif  aria-expanded="false">
+                                                    <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
+                                              MANCHACA</span></a> 
                                 </li>
 
                                 <li class="nav-item"> 
-                                        <a style="font-size: 12.5px; font-weight: bold; color: #222d32" class="nav-link" data-toggle="tab" href="#stevie-ray" role="tab" aria-expanded="false">
-                                        <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
-                               STEVIE RAY</span></a> 
-                                </li>
+                                    <a style="font-size: 12.5px; font-weight: bold; color:#222d32" class="nav-link @if (\Request::is('pecan')) active" href="#" @else " href="{{url('pecan')}}"  @endif aria-expanded="false">
+                                                <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
+                                          PECAN</span></a> 
+                                    </li>
 
-                                <li class="nav-item"> 
-                                        <a style="font-size: 12.5px; font-weight: bold; color: #222d32" class="nav-link" data-toggle="tab" href="#taj-mahal" role="tab" aria-expanded="false">
-                                        <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
-                                     TAJ MAHAL</span></a> 
-                                </li>
+                                    <li class="nav-item"> 
+                                        <a style="font-size: 12.5px; font-weight: bold; color:#222d32" class="nav-link @if (\Request::is('stevieray')) active" href="#" @else " href="{{url('stevieray')}}"  @endif aria-expanded="false">
+                                                    <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
+                                              STEVIE RAY</span></a> 
+                                        </li>
 
-                                <li class="nav-item"> 
-                                        <a style="font-size: 12.5px; font-weight: bold; color: #222d32" class="nav-link" data-toggle="tab" href="#the-oasis" role="tab" aria-expanded="false">
-                                        <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
-                                     THE OASIS</span></a> 
-                                </li>
+                                    <li class="nav-item"> 
+                                        <a style="font-size: 12.5px; font-weight: bold; color:#222d32" class="nav-link @if (\Request::is('tajmahal')) active" href="#" @else " href="{{url('tajmahal')}}"  @endif aria-expanded="false">
+                                                <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
+                                            TAJ MAHAL</span></a> 
+                                    </li>
+
+                                    <li class="nav-item"> 
+                                        <a style="font-size: 12.5px; font-weight: bold; color:#222d32" class="nav-link @if (\Request::is('theoasis')) active" href="#" @else " href="{{url('theoasis')}}"  @endif  aria-expanded="false">
+                                                <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
+                                            THE OASIS</span></a> 
+                                    </li>
                            </ul>
                             <!-- Tab panes -->
                             <div class="tab-content br-n pn">
@@ -116,11 +116,11 @@
 
  <!-- ALL EVENT MODAL  -->
  <div id="calendarModal" class="modal fade">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" id="bg-header" style="color: white;">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
-                <h4 id="modalTitle" class="modal-title"></h4>
+                <h4 id="modalTitle" class="modal-title"  style="color: white;"></h4>
             </div>
             <div id="modalBody" class="modal-body"> </div>
             <div class="modal-footer">
@@ -160,7 +160,8 @@ var defaultEvents =  [
                                 start: "{{ \Carbon\Carbon::parse($event->start)->format('Y-m-d H:i')}} ",
                                 end: "{{ \Carbon\Carbon::parse($event->end)->format('Y-m-d H:i') }}",
                                 location: "@if($event->theRoom){{ucwords($event->theRoom->room)}}@endif",
-                                remarks: "{{$event->remarks}} {{ \Carbon\Carbon::parse($event->start)->format('Y-m-d H:i')}} - {{ \Carbon\Carbon::parse($event->end)->format('Y-m-d H:i') }}",
+                                remarks: "{{$event->remarks}}",
+                                duration: "{{ \Carbon\Carbon::parse($event->start)->format('Y-m-d (h:i A) D')}} - {{ \Carbon\Carbon::parse($event->end)->format('Y-m-d (h:i A) D') }}",
                                 createdBy: "@if($event->theCreator){{$event->theCreator->fullname}}@endif",
                                 backgroundColor: "@if($event->theRoom){{$event->theRoom->color_code}}@endif",
                                 @isset( $event->repeatUntil)
@@ -194,10 +195,11 @@ $(document).ready(function() {
         nextDayThreshold: '00:00:00',
         timezone : 'local',
         defaultView: 'month',
+        eventOverlap: false,
         eventLimit: true,
         views: {
             month: {
-            eventLimit: 5,
+            eventLimit: 4,
             eventLimitText: "events"
             }
         },
@@ -209,12 +211,19 @@ $(document).ready(function() {
         },
         // defaultDate: '2016-01-15T16:00:00',
 
-
+                   
         
         events: defaultEvents,
         eventClick:  function(event, jsEvent, view) {
-            $('#modalTitle').html(event.title);
-            $('#modalBody').html(event.remarks);
+            $('#bg-header').css("background-color",  +"'"+ event.borderColor +"'" );
+            $('#bg-header').css("color", "white" );
+            $('#modalTitle').html("Created by: " + event.createdBy);
+            $('#modalBody').html(
+                "<span style='font-weight: bold'>What &nbsp; : </span> &nbsp; " + event.title + "<br>" +
+                "<span style='font-weight: bold'>When  &nbsp;: </span> &nbsp; " +  event.duration + "<br>" +
+                "<span style='font-weight: bold'>Where : </span> &nbsp; " + event.location + "<br>"
+               
+                + event.remarks);
             // $('#eventUrl').attr('href',event.url);
             $('#calendarModal').modal();
         },
