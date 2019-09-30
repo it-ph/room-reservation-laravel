@@ -40,51 +40,51 @@
                                 <li class="nav-item"> <a style="font-size: 12.5px; font-weight: bold; color:#1976d2" class="nav-link active" data-toggle="tab" href="#home" role="tab" aria-expanded="true"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">ALL</span></a> </li>
                             
                                 <li class="nav-item"> 
-                                <a style="font-size: 12.5px; font-weight: bold; color:#f00001" class="nav-link" data-toggle="tab" href="#6th-street" role="tab" aria-expanded="false">
+                                <a style="font-size: 12.5px; font-weight: bold; color:#222d32" class="nav-link" data-toggle="tab" href="#6th-street" role="tab" aria-expanded="false">
                                     <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
-                                    <i class="fa fa-circle" style="font-size: 10px; color: #f00001"></i> 6TH STREET</span></a> 
+                              6TH STREET</span></a> 
                                 </li>
 
                                 <li class="nav-item"> 
-                                    <a style="font-size: 12.5px; font-weight: bold; color: #222222" class="nav-link" data-toggle="tab" href="#lake-austine" role="tab" aria-expanded="false">
+                                    <a style="font-size: 12.5px; font-weight: bold; color: #222d32" class="nav-link" data-toggle="tab" href="#lake-austine" role="tab" aria-expanded="false">
                                         <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
-                                            <i class="fa fa-circle" style="font-size: 10px; color: #222222"></i> LAKE AUSTIN</span></a> 
+                                           LAKE AUSTIN</span></a> 
                                 </li>
 
                                 <li class="nav-item"> 
-                                    <a style="font-size: 12.5px; font-weight: bold; color: #f5b903" class="nav-link" data-toggle="tab" href="#long-horn" role="tab" aria-expanded="false">
+                                    <a style="font-size: 12.5px; font-weight: bold; color: #222d32" class="nav-link" data-toggle="tab" href="#long-horn" role="tab" aria-expanded="false">
                                         <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
-                                        <i class="fa fa-circle" style="font-size: 10px; color: #f5b903"></i> LONGHORN</span></a> 
+                                        LONGHORN</span></a> 
                                 </li>
 
                                 <li class="nav-item"> 
-                                    <a style="font-size: 12.5px; font-weight: bold; color: #20710a" class="nav-link" data-toggle="tab" href="#manchaca" role="tab" aria-expanded="false">
+                                    <a style="font-size: 12.5px; font-weight: bold; color: #222d32" class="nav-link" data-toggle="tab" href="#manchaca" role="tab" aria-expanded="false">
                                             <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
-                                        <i class="fa fa-circle" style="font-size: 10px; color: #20710a"></i> MANCHACA</span></a> 
+                                        MANCHACA</span></a> 
                                 </li>
 
                                 <li class="nav-item"> 
-                                    <a style="font-size: 12.5px; font-weight: bold; color: #001c80" class="nav-link" data-toggle="tab" href="#pecan" role="tab" aria-expanded="false">
+                                    <a style="font-size: 12.5px; font-weight: bold; color: #222d32" class="nav-link" data-toggle="tab" href="#pecan" role="tab" aria-expanded="false">
                                         <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
-                                        <i class="fa fa-circle" style="font-size: 10px; color: #001c80"></i> PECAN</span></a> 
+                                  PECAN</span></a> 
                                 </li>
 
                                 <li class="nav-item"> 
-                                        <a style="font-size: 12.5px; font-weight: bold; color: #ff69b4" class="nav-link" data-toggle="tab" href="#stevie-ray" role="tab" aria-expanded="false">
+                                        <a style="font-size: 12.5px; font-weight: bold; color: #222d32" class="nav-link" data-toggle="tab" href="#stevie-ray" role="tab" aria-expanded="false">
                                         <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
-                                    <i class="fa fa-circle" style="font-size: 10px; color: #ff69b4"></i> STEVIE RAY</span></a> 
+                               STEVIE RAY</span></a> 
                                 </li>
 
                                 <li class="nav-item"> 
-                                        <a style="font-size: 12.5px; font-weight: bold; color: #36024d" class="nav-link" data-toggle="tab" href="#taj-mahal" role="tab" aria-expanded="false">
+                                        <a style="font-size: 12.5px; font-weight: bold; color: #222d32" class="nav-link" data-toggle="tab" href="#taj-mahal" role="tab" aria-expanded="false">
                                         <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
-                                    <i class="fa fa-circle" style="font-size: 10px; color: #36024d"></i> TAJ MAHAL</span></a> 
+                                     TAJ MAHAL</span></a> 
                                 </li>
 
                                 <li class="nav-item"> 
-                                        <a style="font-size: 12.5px; font-weight: bold; color: #ff8040" class="nav-link" data-toggle="tab" href="#the-oasis" role="tab" aria-expanded="false">
+                                        <a style="font-size: 12.5px; font-weight: bold; color: #222d32" class="nav-link" data-toggle="tab" href="#the-oasis" role="tab" aria-expanded="false">
                                         <span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">
-                                    <i class="fa fa-circle" style="font-size: 10px; color: #ff8040"></i> THE OASIS</span></a> 
+                                     THE OASIS</span></a> 
                                 </li>
                            </ul>
                             <!-- Tab panes -->

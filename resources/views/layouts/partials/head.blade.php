@@ -26,6 +26,7 @@
     <link href="{{asset('css/sweetalert.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/google.font.css')}}" >
     <style>
+    .topbar{ background: #003B5D}
     .page-wrapper {
     margin-left: 0px !important;
     }
@@ -34,13 +35,13 @@
     }   
 
     .fc th.fc-sun, .fc th.fc-tue, .fc th.fc-thu, .fc th.fc-sat {
-    background: #003b5d;
+    background: #FD5A46;
     color: white;
     font-weight: 400;
     }
 
     .fc th.fc-mon, .fc th.fc-wed, .fc th.fc-fri {
-    background: #ffb22b;
+    background: #FD5A46;
     color: white;
     font-weight: 400;
     }
@@ -72,6 +73,10 @@
     .popover.clockpicker-popover{
     z-index: 1050;
     }
+
+    .fc-widget-header {
+    border: 1px solid #f4f6f9 !important;
+}
     
 
     .blink_me {
